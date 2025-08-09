@@ -1,0 +1,85 @@
+<div>
+  <div cdkDropList (cdkDropListDropped)="drop($event)" class="space-y-2 select-none">
+
+    @for (file of files(); track file.id) {
+    <div cdkDrag
+      class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-sm hover:shadow-md transition-all duration-200 group">
+
+      <!-- Drag Handle -->
+      <div class="flex items-center space-x-4">
+        <div class="flex-shrink-0">
+          <div cdkDragHandle
+            class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 cursor-grab active:cursor-grabbing">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"></path>
+            </svg>
+          </div>
+        </div>
+
+        <!-- File Icon -->
+        <div class="flex-shrink-0">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center text-white text-sm font-medium"
+            [class]="getFileTypeClass(file.type)">
+            {{ file.icon}}
+          </div>
+        </div>
+
+        <!-- File Info -->
+        <div class="flex-1 min-w-0">
+          <h3 class="text-sm font-medium text-gray-900 dark:text-white truncate">
+            {{ file.name }}
+          </h3>
+          <div class="flex items-center space-x-2 mt-1">
+            <span class="text-xs text-gray-500 dark:text-gray-400 uppercase">{{ file.type }}</span>
+            <span class="text-xs text-gray-400">•</span>
+            <span class="text-xs text-gray-500 dark:text-gray-400">{{ file.size }}</span>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex-shrink-0">
+          <div class="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <button class="p-1 text-gray-400 hover:text-red-500 rounded cursor-pointer" (click)="onDelete(file)">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Drag Preview -->
+      <div *cdkDragPreview
+        class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-lg">
+        <div class="flex items-center space-x-4">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center text-white text-sm font-medium"
+            [class]="getFileTypeClass(file.type)">
+            {{ file.icon }}
+          </div>
+          <div>
+            <h3 class="text-sm font-medium text-gray-900 dark:text-white">{{ file.name }}</h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400">{{ file.size }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+
+  <!-- Empty State -->
+  @if (isEmpty()) {
+  <div class="text-center py-12">
+    <div class="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-full mx-auto mb-4 flex items-center justify-center">
+      <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z">
+        </path>
+      </svg>
+    </div>
+    <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">No files</h3>
+    <p class="text-gray-500 dark:text-gray-400">Add some files to start organizing them</p>
+  </div>
+  }
+</div>

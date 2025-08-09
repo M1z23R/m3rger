@@ -1,0 +1,26 @@
+<div #containerRef class="relative flex flex-col gap-2 h-full">
+  <div class="grid grid-cols-2 gap-2">
+    <div class="flex flex-col gap-2">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Audio Files</h2>
+      <app-dnd-files [(files)]="audioFiles" />
+    </div>
+    <div class="flex flex-col gap-2">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Video Files</h2>
+      <app-dnd-files [(files)]="videoFiles" />
+    </div>
+  </div>
+
+  <div class="flex justify-center">
+    <button class="btn-default" [disabled]="audioFiles().length == 0 || audioFiles().length != videoFiles().length"
+      (click)="onMerge()">
+      Merge Files
+    </button>
+  </div>
+
+  @if(isMerging()) {
+  <app-progressbar [progress]="progress()"></app-progressbar>
+  }
+
+
+  <app-dnd-overlay [container]="containerRef" (filesDropped)="onFilesDropped($event)" />
+</div>

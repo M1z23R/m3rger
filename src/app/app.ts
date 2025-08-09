@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { FfmpegService } from './services/ffmpeg';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,12 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected title = 'm3rger';
+
+  constructor(private ffmpegSvc: FfmpegService) { }
+
+  ffmepgLoaded = computed(() => this.ffmpegSvc.loaded());
+
+  loadFfmpeg() {
+    this.ffmpegSvc.load();
+  }
 }

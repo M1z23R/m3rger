@@ -1,1 +1,94 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+html,
+body,
+app-root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.btn-default {
+  @apply text-white bg-gray-600 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800 cursor-pointer;
+}
+.btn-default.gray {
+  @apply text-black bg-gray-300 hover:bg-gray-200 focus:ring-4 focus:ring-gray-100 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800;
+}
+.btn-default.gray:disabled {
+  @apply bg-gray-500 cursor-not-allowed;
+}
+.btn-default.red {
+  @apply text-white bg-red-400 hover:bg-red-500 focus:ring-4 focus:ring-red-100 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800;
+}
+.btn-default.small {
+  @apply text-sm px-2.5 py-1.5;
+}
+.btn-default:disabled {
+  @apply bg-gray-800 cursor-not-allowed;
+}
+
+.btn-close {
+  @apply text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer;
+}
+
+.btn-clear {
+  @apply bg-gray-200 text-gray-400 hover:text-gray-500 rounded-lg p-1.5 hover:bg-gray-300 inline-flex items-center justify-center h-6 w-6 dark:text-gray-500 dark:hover:text-gray-200 dark:bg-gray-800 dark:hover:bg-gray-900 outline-none cursor-pointer;
+}
+.btn-clear.floating {
+  @apply absolute right-2 top-2;
+}
+
+.chip {
+  @apply flex gap-2 rounded-lg border border-gray-100 bg-gray-200 px-2 py-0.5 text-gray-800 dark:text-gray-300 dark:border-gray-500/15 dark:bg-gray-500/10;
+}
+.chip.green {
+  @apply bg-green-300;
+}
+.chip.red {
+  @apply bg-red-300;
+}
+.chip.yellow {
+  @apply bg-yellow-300;
+}
+
+h1 {
+  @apply text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white;
+}
+
+tbody > tr {
+  @apply odd:bg-white odd:dark:bg-gray-900 even:bg-gray-100 even:dark:bg-gray-800
+         border-b dark:border-gray-700 border-gray-200
+         hover:bg-gray-100 hover:dark:bg-gray-900
+         transition-colors duration-200;
+}
+
+td {
+  @apply px-6 py-4;
+}
+
+th {
+  @apply px-6 py-3;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"] {
+  @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-gray-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500 outline-none placeholder-gray-400;
+}
+
+input[type="checkbox"] {
+  @apply w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600;
+}
+
+label {
+  @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
+}
+
+a {
+  @apply font-medium text-teal-600 dark:text-teal-500;
+}
+
+.card {
+  @apply p-4 rounded-md shadow-md border-black w-full bg-white dark:bg-gray-800;
+}
